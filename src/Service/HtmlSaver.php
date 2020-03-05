@@ -8,8 +8,8 @@ use Twig\Loader\FilesystemLoader;
 
 class HtmlSaver
 {
-    private string $resultDir;
-    private Environment $twig;
+    private $resultDir;
+    private $twig;
 
     public function __construct(string $templateDir, string $resultDir)
     {

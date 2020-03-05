@@ -20,13 +20,13 @@ class Match
         self::REPLACE_PLAYER_MESSAGE_TYPE,
     ];
 
-    private string $id;
-    private \DateTime $date;
-    private string $tournament;
-    private Stadium $stadium;
-    private Team $homeTeam;
-    private Team $awayTeam;
-    private array $messages;
+    private $id;
+    private $date;
+    private $tournament;
+    private $stadium;
+    private $homeTeam;
+    private $awayTeam;
+    private $messages;
 
     public function __construct(string $id, \DateTime $date, string $tournament, Stadium $stadium, Team $homeTeam, Team $awayTeam)
     {
@@ -74,7 +74,7 @@ class Match
         return $this->messages;
     }
 
-    public function addMessage(string $minute, string $text, string $type): void
+    public function addMessage(string $minute, string $text, string $type, array $details): void
     {
         $this->assertCorrectType($type);
 
@@ -82,6 +82,7 @@ class Match
             'minute' => $minute,
             'text'   => $text,
             'type'   => $type,
+            'details' => $details
         ];
     }
 

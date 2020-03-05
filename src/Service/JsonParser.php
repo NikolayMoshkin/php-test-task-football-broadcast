@@ -4,7 +4,7 @@ namespace App\Service;
 
 class JsonParser
 {
-    private string $sourceDir;
+    private $sourceDir;
 
     public function __construct(string $sourceDir)
     {

@@ -16,12 +16,12 @@ class BuildMatchPageCommand extends Command
 {
     protected static $defaultName = 'app:build-match-page';
 
-    private JsonParser $jsonParser;
-    private MatchBuilder $matchBuilder;
-    private HtmlSaver $htmlSaver;
-    private InputInterface $input;
-    private OutputInterface $output;
-    private SymfonyStyle $io;
+    private $jsonParser;
+    private $matchBuilder;
+    private  $htmlSaver;
+    private $input;
+    private $output;
+    private $io;
 
     public function __construct(JsonParser $jsonParser, MatchBuilder $matchBuilder, HtmlSaver $htmlSaver)
     {

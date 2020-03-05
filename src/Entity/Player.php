@@ -6,11 +6,11 @@ class Player
     private const PLAY_PLAY_STATUS = 'play';
     private const BENCH_PLAY_STATUS = 'bench';
 
-    private int $number;
-    private string $name;
-    private string $playStatus;
-    private int $inMinute;
-    private int $outMinute;
+    private $number;
+    private $name;
+    private $playStatus;
+    private $inMinute;
+    private $outMinute;
 
     public function __construct(int $number, string $name)
     {

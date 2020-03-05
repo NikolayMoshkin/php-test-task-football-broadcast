@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
 
     <title>{{ match.tournament }} || {{ match.homeTeam.name }} – {{ match.awayTeam.name }}</title>
@@ -85,15 +86,15 @@
         </div>
         <div class="col-md-4">
             {% import _self as render %}
-            {{ render.renderTeamInfo(match.homeTeam) }}
-            {{ render.renderTeamInfo(match.awayTeam) }}
+            {{ render.renderTeamInfo(match.homeTeam, match) }}
+            {{ render.renderTeamInfo(match.awayTeam, match) }}
         </div>
     </div>
 </div>
 </body>
 </html>
 
-{% macro renderTeamInfo(team) %}
+{% macro renderTeamInfo(team, match) %}
     <div class="card mb-3">
         <div class="card-header text-center">
             <div>
@@ -121,6 +122,11 @@
                         </td>
                         <td>
                             {{ player.name }}
+                            {% for message in match.messages %}
+                                {% if message.type == constant('App\\Entity\\Match::GOAL_MESSAGE_TYPE') and message.details.playerNumber == player.number and message.details.team == team.name%}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                                {% endif %}
+                            {% endfor %}
                         </td>
                         <td>
                             {{ player.playTime }}’

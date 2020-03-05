@@ -3,9 +3,9 @@ namespace App\Entity;
 
 class Stadium
 {
-    private string $country;
-    private string $city;
-    private string $name;
+    private $country;
+    private $city;
+    private $name;
 
     public function __construct(string $country, string $city, string $name)
     {

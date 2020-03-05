@@ -4,15 +4,15 @@ namespace App\Entity;
 
 class Team
 {
-    private string $name;
-    private string $country;
-    private string $logo;
+    private $name;
+    private $country;
+    private $logo;
     /**
      * @var Player[]
      */
-    private array $players;
-    private string $coach;
-    private int $goals;
+    private $players;
+    private $coach;
+    private $goals;
 
     public function __construct(string $name, string $country, string $logo, array $players, string $coach)
     {
