@@ -105,6 +105,25 @@
                 <small>{{ team.coach }}</small>
             </div>
         </div>
+        <div class="p-2">
+            <h5>Время в игре:</h5>
+            <ul class="list-group">
+                {#                {% for player in team.stat %}#}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Нападающий
+                    <span class="badge badge-primary badge-pill">{{ team.stat.attack }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Защитник
+                    <span class="badge badge-primary badge-pill">{{ team.stat.defender }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Полузащитник
+                    <span class="badge badge-primary badge-pill">{{ team.stat.halfDefender }}</span>
+                </li>
+                {#                {% endfor %}#}
+            </ul>
+        </div>
         <div class="card-body">
             <table class="table table">
                 <thead>
@@ -123,8 +142,14 @@
                         <td>
                             {{ player.name }}
                             {% for message in match.messages %}
-                                {% if message.type == constant('App\\Entity\\Match::GOAL_MESSAGE_TYPE') and message.details.playerNumber == player.number and message.details.team == team.name%}
+                                {% if message.type == constant('App\\Entity\\Match::GOAL_MESSAGE_TYPE') and message.details.playerNumber == player.number and message.details.team == team.name %}
                                     <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                                {% endif %}
+                                {% if message.type == constant('App\\Entity\\Match::YELLOW_CARD_MESSAGE_TYPE') and message.details.playerNumber == player.number and message.details.team == team.name %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/card.png">
+                                {% endif %}
+                                {% if message.type == constant('App\\Entity\\Match::RED_CARD_MESSAGE_TYPE') and message.details.playerNumber == player.number and message.details.team == team.name %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/yellow_red.png">
                                 {% endif %}
                             {% endfor %}
                         </td>

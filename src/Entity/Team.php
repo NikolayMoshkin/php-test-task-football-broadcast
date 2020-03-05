@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Core\Main;
+
 class Team
 {
     private $name;
@@ -102,5 +104,21 @@ class Team
                 );
             }
         }
+    }
+
+    public function getStat()
+    {
+        $stat = [];
+        foreach ($this->players as $player) {
+            if (Match::PLAYER_TYPE_GOALKEEPER === $player->getPosition())
+                $stat['goalkeeper'] += $player->getPlayTime();
+            if (Match::PLAYER_TYPE_DEFENDER === $player->getPosition())
+                $stat['defender'] += $player->getPlayTime();
+            if (Match::PLAYER_TYPE_HALF_DEFENDER === $player->getPosition())
+                $stat['halfDefender'] += $player->getPlayTime();
+            if (Match::PLAYER_TYPE_ATTACK === $player->getPosition())
+                $stat['attack'] += $player->getPlayTime();
+        }
+        return $stat;
     }
 }

@@ -11,6 +11,11 @@ class Match
     public const RED_CARD_MESSAGE_TYPE         = 'redCard';
     public const REPLACE_PLAYER_MESSAGE_TYPE   = 'replacePlayer';
 
+    public const PLAYER_TYPE_GOALKEEPER  = 'В';
+    public const PLAYER_TYPE_DEFENDER  = 'З';
+    public const PLAYER_TYPE_HALF_DEFENDER  = 'П';
+    public const PLAYER_TYPE_ATTACK  = 'Н';
+
     private const MESSAGE_TYPES = [
         self::INFO_MESSAGE_TYPE,
         self::DANGEROUS_MOMENT_MESSAGE_TYPE,
